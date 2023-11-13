@@ -1,0 +1,7 @@
+{
+    "host": "management-tutorial.cqb3xsxdgrxq.ap-northeast-2.rds.amazonaws.com",
+    "user": "user",
+    "password": "kran1014",
+    "port": "3306",
+    "database": "management"
+}
