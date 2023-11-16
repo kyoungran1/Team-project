@@ -13,7 +13,6 @@ create table menu(
 
 create table users(
 	users_id int(3) NOT NULL,
-    users_name char(4) NOT NULL,
     phonenum varchar(20) NOT NULL,
     primary key (users_id)
     );
