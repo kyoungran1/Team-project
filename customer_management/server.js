@@ -2,6 +2,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const path = require('path');
+const { sequelize } = require('customer_management/server'); // 경로에 따라 수정
+const User = require('customer_management/models/User'); // 경로에 따라 수정
+const OrderRecord = require('customer_management/models/OrderRecord'); // 경로에 따라 수정
 
 const app = express();
 const port = 4000;
@@ -46,9 +49,16 @@ const User = sequelize.define('user', {
     },
 });
 
-sequelize.sync({ alter: true})
+
+User.hasMany(OrderRecord, { foreignKey: 'users_id' });
+OrderRecord.belongsTo(User, { foreignKey: 'users_id' });
+
+sequelize.sync()
     .then(() => {
         console.log('Database connection successful');
+        app.listen(port, () => {
+            console.log(`Server is running on port ${port}`);
+        });
     })
     .catch((err) => {
         console.error('Database connection error:', err);
