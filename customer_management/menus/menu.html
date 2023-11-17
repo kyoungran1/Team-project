@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu Management</title>
+</head>
+<body>
+    <h1>Menu Management</h1>
+
+    <form id="menuForm">
+        <label for="menuTitle">Menu Title:</label>
+        <input type="text" id="menuTitle" name="menuTitle" required>
+
+        <label for="menuPrice">Menu Price:</label>
+        <input type="number" id="menuPrice" name="menuPrice" required>
+
+        <label for="menuExplain">Menu Explanation:</label>
+        <input type="text" id="menuExplain" name="menuExplain">
+
+        <label for="menuCategory">Menu Category:</label>
+        <input type="text" id="menuCategory" name="menuCategory">
+
+        <button type="submit">Add Menu</button>
+    </form>
+
+    <div id="menuList">
+        <h2>Menu List</h2>
+        <ul id="menus"></ul>
+    </div>
+
+    <script src="MenuComponent.js"></script>
+</body>
+</html>

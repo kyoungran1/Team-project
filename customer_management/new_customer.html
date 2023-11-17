@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Management System</title>
+    <!-- 파비콘 로드 비활성화 -->
+    <link rel="icon" type="image/x-icon" href="data:image/x-icon;,">
+</head>
+<body>
+    <h1>Customer Management System</h1>
+
+    <form id="userForm">
+        <label for="phoneNumber">Phone Number:</label>
+        <input type="text" id="phoneNumber" name="phoneNumber" required>
+        <button type="submit">Register User</button>
+    </form>
+
+    <div id="userList">
+        <h2>User List</h2>
+        <ul id="users"></ul>
+    </div>
+
+    <script src="customer.js"></script>
+</body>
+</html>
