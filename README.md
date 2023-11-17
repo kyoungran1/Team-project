@@ -4,7 +4,7 @@
 <파일구조> 수정일자: 2023.11.17
 PROJECT
 │
-├── customer_management
+├── customer_management \w
 │   ├── menus
 │   │   ├── node_modules
 │   │   ├── menu.html
