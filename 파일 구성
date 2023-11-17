@@ -1,0 +1,24 @@
+PROJECT
+│
+├── customer_management
+│   ├── menus
+│   │   ├── node_modules
+│   │   ├── menu.html
+│   │   ├── MenuComponent.js
+│   │   ├── package-lock.json
+│   │   ├── package.json
+│   │   └── server.js
+│   ├── node_modules
+│   ├── .gitignore
+│   ├── order.html
+│   ├── order.js
+│   ├── package-lock.json
+│   ├── package.json
+│   └── server.js
+└── node_modules
+├── .gitignore
+├── order.html
+├── order.js
+├── package-lock.json
+├── package.json
+├── server.js
