@@ -1,0 +1,62 @@
+{order.js 코드}
+// order.js
+
+async function submitOrder(orderData) {
+    try {
+        // 서버에 주문 정보를 전송
+        const response = await fetch('http://localhost:4000/api/orders', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(orderData),
+        });
+
+        // 서버의 응답을 확인하고 처리
+        const result = await response.json();
+        if (result.success) {
+            console.log('주문이 성공적으로 저장되었습니다.');
+        } else {
+            console.error('주문 저장 실패:', result.message);
+        }
+    } catch (error) {
+        console.error('API 호출 중 오류 발생:', error);
+    }
+}
+
+// 예시 주문 데이터
+const orderData = {
+    users_id: 1,          // 사용자 ID (로그인 등의 방법으로 얻어와야 함)
+    order_menu_id: 2,     // 주문한 메뉴의 ID
+    order_price: 15000,   // 주문한 메뉴의 가격
+};
+
+// 예시 주문을 서버에 전송
+submitOrder(orderData);
+
+document.getElementById('phoneNumberForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const phoneNumber = document.getElementById('phoneNumber').value;
+
+    // 서버에 전화번호를 전송하고 추천 메뉴를 받아옴
+    fetch(`http://localhost:4000/api/recommendations/${phoneNumber}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const recommendation = data.recommendation;
+                if (recommendation) {
+                    // 추천 메뉴를 화면에 표시하는 로직 추가
+                    alert(`추천 메뉴: ${recommendation.menu_title}`);
+                } else {
+                    alert('이전 주문 이력이 없습니다.');
+                }
+            } else {
+                console.error('Error fetching recommendation:', data.message);
+            }
+        })
+        .catch(error => {
+            console.error('Error fetching recommendation:', error);
+        });
+
+});
