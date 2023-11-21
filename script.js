@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 메뉴 페이지가 변경될 때 'cart' 영역을 초기화하고 '담기' 버튼에 대한 리스너 등록
   function loadContent(menu) {
-    resetCart();
+    
 
     const contentContainer = document.getElementById('content-container');
 
@@ -75,16 +75,8 @@ document.addEventListener('DOMContentLoaded', () => {
       .catch(error => console.error('Error fetching content:', error));
   }
 
-  // 초기에 '커피' 페이지의 내용을 로드
-  loadContent('coffee');
-
-  // 메뉴 변경 버튼에 대한 이벤트 리스너 등록
-  document.querySelectorAll('.menu-item').forEach(item => {
-    item.addEventListener('click', () => {
-      const menu = item.getAttribute('data-menu');
-      loadContent(menu);
-    });
-  });
+  // 'loadContent' 함수를 전역 스코프에서도 사용 가능하도록 추가
+  document.loadContent = loadContent;
 
   // 주문하기 버튼에 대한 이벤트 리스너 등록
   checkoutButton.addEventListener('click', () => {
@@ -109,26 +101,17 @@ document.addEventListener('DOMContentLoaded', () => {
     popup.style.display = 'none';
   });
 
-  // '담기' 버튼에 대한 이벤트 리스너 등록
-  document.registerAddToCartListeners = function () {
-    document.querySelectorAll('.add-to-cart').forEach(button => {
-      button.addEventListener('click', () => {
-        const itemName = button.parentElement.querySelector('span').textContent;
-        addToCartHandler(itemName);
-      });
+  // 초기에 '커피' 페이지의 내용을 로드
+  loadContent('coffee');
+
+  // 메뉴 변경 버튼에 대한 이벤트 리스너 등록
+  document.querySelectorAll('.menu-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const menu = item.getAttribute('data-menu');
+      loadContent(menu);
     });
-  };
+  });
 
-  // 'loadContent' 함수를 전역 스코프에서도 사용 가능하도록 추가
-  document.loadContent = function (menu) {
-    const contentContainer = document.getElementById('content-container');
-
-    fetch(`${menu}.html`)
-      .then(response => response.text())
-      .then(html => {
-        contentContainer.innerHTML = html;
-        document.registerAddToCartListeners(); // '담기' 버튼에 대한 이벤트 리스너 등록
-      })
-      .catch(error => console.error('Error fetching content:', error));
-  };
+  // '담기' 버튼에 대한 이벤트 리스너 등록
+  document.registerAddToCartListeners = registerAddToCartListeners;
 });
