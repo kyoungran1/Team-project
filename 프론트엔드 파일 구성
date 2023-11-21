@@ -1,22 +1,26 @@
 PROJECT
-│
-├── index.html
-│   │   ├── script.js
-│   │   └── styles.css
-│   ├── menu
-│   │   ├── coffee.html
-│   │   │   ├── script.js
-│   │   │   └── styles.css
-│   │   ├── tea.html
-│   │   │   ├── script.js
-│   │   │   └── styles.css
-│   │   ├── blended.html
-│   │   │   ├── script.js
-│   │   │   └── styles.css
-│   │   └── desserts.html
-│   │       ├── script.js
-│   │       └── styles.css
-│   └── cart
-│       ├── script.js
-│       └── styles.css
-└── 
+│  
+├── .vscode
+│  │   ├── launch.json
+│  │   └── settings.json
+│  ├── appinfo.json
+│  ├── index.html
+│  │   │   ├── script.js
+│  │   │   └── styles.css
+│  │   ├── menu (이하 하위폴더라는 말 아님)
+│  │   │   ├── coffee.html
+│  │   │   │   ├── script.js
+│  │   │   │   └── styles.css
+│  │   │   ├── tea.html
+│  │   │   │   ├── script.js
+│  │   │   │   └── styles.css
+│  │   │   ├── blended.html
+│  │   │   │   ├── script.js
+│  │   │   │   └── styles.css
+│  │   │   └── desserts.html
+│  │   │       ├── script.js
+│  │   │       └── styles.css
+│  │   └── cart
+│  │       ├── script.js
+│  │       └── styles.css
+│  └── 
