@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="n_number.css">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+</head>
+
+<body>
+  <div id="keypad">
+    <div class="key" onclick="appendNumber(1)">1</div>
+    <div class="key" onclick="appendNumber(2)">2</div>
+    <div class="key" onclick="appendNumber(3)">3</div>
+    <div class="key" onclick="appendNumber(4)">4</div>
+    <div class="key" onclick="appendNumber(5)">5</div>
+    <div class="key" onclick="appendNumber(6)">6</div>
+    <div class="key" onclick="appendNumber(7)">7</div>
+    <div class="key" onclick="appendNumber(8)">8</div>
+    <div class="key" onclick="appendNumber(9)">9</div>
+    <div class="key" onclick="clearInput()">C</div>
+    <div class="key" onclick="appendNumber(0)" id="zero">0</div>
+  </div>
+
+  <script src="nn.js"></script>
+
+  <script>
+    let phoneNumber = '';
+
+    function appendNumber(num) {
+      phoneNumber += num;
+      updateDisplay();
+    }
+
+    function clearInput() {
+      phoneNumber = '';
+      updateDisplay();
+    }
+
+    function updateDisplay() {
+      // 메인 페이지의 input 요소에 직접 값을 설정
+      window.parent.document.getElementById('numberInput').value = phoneNumber;
+    }
+  </script>
+</body>
+
+</html>
