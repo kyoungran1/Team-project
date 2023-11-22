@@ -1,16 +1,26 @@
 PROJECT
 │  
 ├── .vscode
-│  │   ├── launch.json 
-│  │   └── settings.json
-│  ├── appinfo.json
-│  ├── index.html
-│  │   ├── menu (하위폴더라는 뜻 아님)
-│  │   │   ├── coffee.html
-│  │   │   ├── tea.html
-│  │   │   ├── blended.html
-│  │   │   └── desserts.html
-│  │   └── cart
-│  ├── script.js 
-│  └── styles.css 
-│  
+│   │   ├── launch.json 
+│   │   └── settings.json
+│   ├── appinfo.json
+│   ├── index.html
+│   │   ├── menu (하위폴더라는 뜻 아님)
+│   │   │   ├── coffee.html
+│   │   │   ├── tea.html
+│   │   │   ├── blended.html
+│   │   │   └── desserts.html
+│   │   └── cart
+│   ├── script.js 
+│   └── styles.css 
+│ 
+│
+├── keypad
+│   │   ├── n_number.css
+│   │   ├── nn.js
+│   │   └── number.html
+│   ├── login.html
+│   ├── login.js
+│   ├── register.html
+│   ├── register.js
+│   └── style.css
