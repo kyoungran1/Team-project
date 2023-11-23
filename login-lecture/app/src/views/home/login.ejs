@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/home/login.css">
+    <script src="/js/home/login.js" defer></script>
+    <title>Document</title>
+    <style>
+      iframe{
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translate(-50%, -20%);
+        width: 600px; /* 원하는 폭으로 조절 */
+        height: 400px; /* 원하는 높이로 조절 */
+      }
+    </style>
+</head>
+<body>
+    <div class="login-page">
+        <div class="form">
+          <form class="login-form">
+            <input id="numberInput" type="text" placeholder="전화 번호"/>
+            <p id="button">login</p id="button">
+            <p class="message">Not registered? <a href="/register">Create an account</a></p>
+          </form>
+        </div>
+      </div>
+      <iframe id="numberFrame" src="/keypad/keypad.html" frameborder="0"></iframe>
+</body>
+</html>
+
+<!-- Copyright (c) 2023 by Aigars Silkalns (https://codepen.io/colorlib/pen/rxddKy)

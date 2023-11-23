@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/css/home/login.css">
+    <script src="/js/home/register.js" defer></script>
+    <title>Document</title>
+    <style>
+      iframe {
+          position: absolute;
+          top: 70%;
+          left: 50%;
+          transform: translate(-50%, -20%);
+          width: 600px; /* 원하는 폭으로 조절 */
+          height: 400px; /* 원하는 높이로 조절 */
+      }
+  </style> 
+</head>
+<body>
+    <div class="login-page">
+        <div class="form">
+          <form class="login-form" onsubmit="return confirmtel()">
+            <input id="numberInput" type="text" placeholder="전화 번호 입력"/>
+            <p id="button">SUBMIT</p>
+            <p class="message">Already registered? <a href="/login">login</a></p>
+          </form>
+        </div>
+      </div>
+      <iframe id="numberFrame" src="/keypad/keypad.html" frameborder="0"></iframe>
+
+      <script>
+        function confirmtel() {
+            const phoneNumber = document.getElementById('numberInput').value.trim();
+
+            // 팝업창 표시
+            const isConfirmed = window.confirm(`위 번호가 맞습니까?\n${phoneNumber}`);
+            
+            if (isConfirmed) {
+                // 예 버튼 클릭 시 동작
+                alert('계정이 생성되었습니다.');
+                resetInput();
+                return true; // 폼 전송 허용
+            } else {
+                // 아니요 버튼 클릭 시 동작
+                return false; // 폼 전송 차단
+            }
+        }
+
+        function resetInput() {
+            document.getElementById('numberInput').value = '';
+        }
+    </script>
+</body>
+</html>
+
+<!-- Copyright (c) 2023 by Aigars Silkalns (https://codepen.io/colorlib/pen/rxddKy)
