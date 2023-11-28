@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+
+<form id="loginForm" onsubmit="submitForm(event)">
+    <label for="phone">Phone:</label>
+    <input type="text" id="phone" name="phone" required>
+
+    <button type="submit">Login</button>
+</form>
+
+<script>
+    function submitForm(event) {
+        event.preventDefault(); // 폼 기본 동작 방지
+
+        const phone = document.getElementById('phone').value;
+
+        // AJAX 또는 fetch를 사용하여 서버로 데이터를 전송
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/login', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                console.log('Login successful');
+            } else {
+                console.error('Error logging in:', xhr.statusText);
+            }
+        };
+
+        xhr.onerror = function () {
+            console.error('Network error occurred');
+        };
+
+        const data = JSON.stringify({ phone });
+        xhr.send(data);
+    }
+</script>
+
+</body>
+</html>

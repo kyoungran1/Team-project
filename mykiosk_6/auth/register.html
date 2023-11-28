@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+</head>
+<body>
+
+<form id="registerForm">
+    <label for="registerPhone">Phone:</label>
+    <input type="text" id="registerPhone" name="registerPhone" required>
+
+    <button type="button" onclick="submitForm()">Register</button>
+</form>
+
+<script>
+    function submitForm() {
+        const phone = document.getElementById('registerPhone').value;
+
+        // AJAX 또는 fetch를 사용하여 서버로 데이터를 전송
+        const xhr = new XMLHttpRequest();
+        xhr.open('POST', '/register', true);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+
+        xhr.onload = function () {
+            if (xhr.status === 200) {
+                console.log('User registered successfully');
+            } else {
+                console.error('Error registering user:', xhr.statusText);
+            }
+        };
+
+        xhr.onerror = function () {
+            console.error('Network error occurred');
+        };
+
+        const data = JSON.stringify({ phone });
+        xhr.send(data);
+    }
+</script>
+
+</body>
+</html>

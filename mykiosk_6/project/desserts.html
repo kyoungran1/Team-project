@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Desserts Menu</title>
+</head>
+<body>
+  <main>
+    <div class="menu">
+      <div class="item">
+        <span>와플</span>
+        <button class="add-to-cart" data-item="와플">담기</button>
+      </div>
+      <div class="item">
+        <span>크로플</span>
+        <button class="add-to-cart" data-item="크로플">담기</button>
+      </div>
+      <!-- Add more menu items here -->
+      <div class="item">
+        <span>치즈케이크</span>
+        <button class="add-to-cart" data-item="치즈케이크">담기</button>
+      </div>
+      <div class="item">
+        <span>에그타르트</span>
+        <button class="add-to-cart" data-item="에그타르트">담기</button>
+      </div>
+      <div class="item">
+        <span>티라미수</span>
+        <button class="add-to-cart" data-item="티라미수">담기</button>
+      </div>
+    </div>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 담기 버튼에 대한 이벤트 리스너 등록
+      document.querySelector('.menu').addEventListener('click', (event) => {
+        if (event.target.classList.contains('add-to-cart')) {
+          const itemName = event.target.getAttribute('data-item');
+          addToCartHandler(itemName);
+        }
+      });
+
+      // 스크립트 로드
+      loadScript('script.js');
+    });
+
+    function loadScript(src) {
+      const script = document.createElement('script');
+      script.src = src;
+      document.head.appendChild(script);
+    }
+  </script>
+</body>
+</html>
