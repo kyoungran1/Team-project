@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <title>My Kiosk</title>
+</head>
+<body>
+  <header>
+    <button class="login-button" onclick="redirectToLogin()">로그인</button>
+    <nav>
+      <ul>
+        <li><button class="menu-button" onclick="loadContent('coffee')">커피</button></li>
+        <li><button class="menu-button" onclick="loadContent('tea')">차</button></li>
+        <li><button class="menu-button" onclick="loadContent('blended')">블렌디드</button></li>
+        <li><button class="menu-button" onclick="loadContent('desserts')">디저트</button></li>
+      </ul>
+    </nav>
+    <button class="add-menu-button" onclick="openAddMenuPopup()">메뉴 추가</button>
+  </header>
+  
+  <main id="content-container"></main>
+
+  <div id="popup" class="popup">
+    <p id="popup-message"></p>
+    <button id="close-popup">닫기</button>
+    <button id="confirm-payment" style="display: none;">결제하기</button>
+  </div>
+
+  <div class="cart">
+    <ul id="cart-items"></ul>
+    <button id="checkout-button">주문하기</button>
+  </div>
+
+  <div id="addMenuModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeAddMenuModal()">&times;</span>
+      <h2>메뉴 추가</h2>
+      <form id="menuForm">
+        <label for="menuTitle">메뉴명:</label>
+        <input type="text" id="menuTitle" name="menuTitle" required>
+
+        <label for="menuPrice">가격:</label>
+        <input type="number" id="menuPrice" name="menuPrice" required>
+
+        <label for="menuExplain">설명:</label>
+        <input type="text" id="menuExplain" name="menuExplain">
+
+        <label for="menuCategory">카테고리:</label>
+        <input type="text" id="menuCategory" name="menuCategory">
+
+        <button type="button" onclick="addMenu()">추가</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // 메뉴 추가 버튼 클릭 시 팝업 열기
+    const addMenuButton = document.querySelector('.add-menu-button');
+    addMenuButton.addEventListener('click', openAddMenuPopup);
+
+    // 로그인 페이지로 이동하는 함수
+    function redirectToLogin() {
+      window.location.href = "login.html";
+    }
+
+    // 메뉴 추가 팝업을 열고 닫는 함수들
+    function openAddMenuPopup() {
+      console.log('Opening add menu popup');
+      const addMenuModal = document.getElementById('addMenuModal');
+      addMenuModal.classList.add('active');
+    }
+
+    function closeAddMenuModal() {
+      console.log('Closing add menu popup');
+      const addMenuModal = document.getElementById('addMenuModal');
+      addMenuModal.classList.remove('active');
+    }
+
+    // 메뉴 추가 함수
+    async function addMenu() {
+      const title = document.getElementById('menuTitle').value;
+      const price = document.getElementById('menuPrice').value;
+      const explain = document.getElementById('menuExplain').value;
+      const category = document.getElementById('menuCategory').value;
+
+      try {
+        const response = await fetch('http://localhost:4000/api/menus', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            menu_title: title,
+            menu_price: parseInt(price),
+            menu_explain: explain,
+            menu_category: category,
+          }),
+        });
+        const data = await response.json();
+
+        if (data.success) {
+          // 메뉴 추가 성공 시 팝업 닫기 및 메뉴 리스트 갱신
+          closeAddMenuModal();
+          fetchMenus();  // fetchMenus 함수는 메뉴를 서버에서 가져와 화면에 표시하는 역할을 합니다.
+          console.log('Menu added successfully:', data.message);
+        } else {
+          console.error('Error adding menu:', data.message);
+        }
+      } catch (error) {
+        console.error('Error adding menu:', error);
+      }
+    }
+
+    // 메뉴 가져오기 함수
+    async function fetchMenus() {
+      try {
+        const response = await fetch('http://localhost:4000/api/menus');
+        const data = await response.json();
+
+        if (data.success) {
+          // 가져온 메뉴 데이터를 화면에 표시하는 로직을 추가
+          console.log('Menus fetched successfully:', data.menus);
+        } else {
+          console.error('Error fetching menus:', data.message);
+        }
+      } catch (error) {
+        console.error('Error fetching menus:', error);
+      }
+    }
+
+    // 추가: 팝업 닫기 함수
+    function closePopup() {
+      const popup = document.getElementById('popup');
+      popup.style.display = 'none';
+    }
+
+    // 추가: 주문하기 버튼 클릭 시 호출되는 함수
+    function orderButtonClick() {
+      // 여기에 주문 처리 로직 추가
+      console.log('Order button clicked!');
+    }
+  </script>
+</body>
+</html>
