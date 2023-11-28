@@ -1,0 +1,67 @@
+mykiosk_6
+|
+├── node_modules
+|
+├── auth
+|    ├── auth.js
+|    ├── index.html
+|    ├── login.html
+|    ├── package.js
+|    ├── package-lock.json
+|    ├── register.html
+|    └── server.js
+
+├── project
+|    ├── .vscode
+|    ├── appinfo.json
+|    ├── index.html
+|    ├── coffee.html
+|    ├── tea.html
+|    ├── blended.html
+|    ├── desserts.html
+|    ├── script.js 
+|    └── styles.css 
+├── menus
+|    ├── menu.html
+|    ├── server.js
+|    ├── package.js
+|    ├── package-lock.json
+|    ├── server.json
+|    └── MenuComponent.js
+|
+├── package.json
+├── package-lock.json
+└── main_server.js
+
+
+
+데이터베이스:
+테이블 : order_history 
+order_history > id, item_name, quantity, timestamp, customer_name
+테이블 : users
+users > id, phone
+테이블 : menus
+menus > menu_id, menu_title, menu_price, menu_explain, menu_category
+
+
+
+엔드포인트:
+mykios.cqb3xsxdgrxq.ap-northeast-2.rds.amazonaws.com
+포트:3306
+엔진: MySQL
+DB 식별자 :mykios
+ID: user
+passward: kran1014
+
+
+1. cd "C:\mykiosk_4"
+2. node main_server.js
+3. http://localhost:5000 실행해서  메뉴 주문 
+
+4. cd "C:\mykiosk_4\auth"
+5. npm start
+6. http://localhost:3000 실행해서  로그인/회원가입
+
+7. cd "C:\mykiosk_4\menus"
+8. npm start
+9. http://localhost:4000 실행해서  메뉴 추가
