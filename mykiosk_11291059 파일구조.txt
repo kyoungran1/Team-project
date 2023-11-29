@@ -1,0 +1,119 @@
+mykiosk
+|
+├── node_modules
+|
+├── auth
+|    ├── node_modules
+|    ├── auth.js
+|    ├── index.html
+|    ├── login.html
+|    ├── package.json
+|    ├── package-lock.json
+|    ├── register.html
+|    └── server.js
+|
+|
+├── menus
+|    ├── menu.html
+|    ├── MenuComponent.js
+|    ├── package.json
+|    ├── package-lock.json
+|    └── server.js
+|
+|
+├── project
+|    ├── appinfo.json
+|    ├── blended.html
+|    ├── coffee.html
+|    ├── desserts.html
+|    ├── index.html
+|    ├── script.js
+|    ├── styles.css 
+|    ├── tea.html 
+|
+├── package.json
+├── package-lock.json
+└── main_server.js
+
+
+
+데이터베이스:
+테이블 : order_history 
+order_history > id, item_name, quantity, timestamp
+테이블 : users
+users > id, phone
+테이블 : menus
+menus > menu_id, menu_title, menu_price, menu_explain, menu_category
+
+
+
+엔드포인트:
+mykios.cqb3xsxdgrxq.ap-northeast-2.rds.amazonaws.com
+포트:3306
+엔진: MySQL
+DB 식별자 :mykios
+ID: user
+passward: kran1014
+
+첫번째 프롬프트
+cd "C:\mykiosk"
+PS C:\mykiosk> node main_server.js
+
+두번째 프롬프트
+cd "C:\mykiosk_1\menus"
+PS C:\mykiosk_1\project\menus> npm start
+
+세번째 프롬프트
+cd "C:\mykiosk_1\auth"
+PS C:\mykiosk_1\project\auth> npm start
+
+=============================================
+지금까지 구현된 프로그램 시나리오
+
+1. 초기화면: 키오스크 화면 (http://localhost:5000/) 
+2. 로그인 버튼을 통해서 로그인창 이동 (http://localhost:3000/)
+3. 로그인창에서 로그인 / 회원가입 선택
+-회원가입 :Register 버튼 , 로그인 버튼  [2개의 버튼]
+=> 전화번호 입력 -> Register 버튼 클릭 -> 데이터베이스 users 테이블에 저장 -> 로그인으로 이동
+=> 로그인 버튼 -> 회원가입 안하고 바로 로그인으로 이동 ( 재방문인데 회원가입을 잘못 선택했을 때 사용)
+-로그인 -> 전화번호 입력
+=> 전화번호가 데이터베이스에 있는 경우 login 버튼 클릭 -> 키오스크 화면으로 이동
+=> 전화번호가 데이터베이스에 없는 경우 login 버튼 클릭 -> 키오스크 화면으로 이동 불가능
+4. 키오스크 화면에서 메뉴 주문
+-처음 메뉴를 담은 경우 : 추천 메뉴 팝업창 나타남
+-메뉴를 전부 담고 주문하기 버튼 클릭 : 추천 메뉴 팝업창 나타남
+-결제하기 버튼을 누르면 데이터베이스에 저장됨
+5. 메뉴추가 버튼 : 메뉴 추가 화면으로 이동 (http://localhost:4000)
+-메뉴추가 정보 입력 -> Add Menu 버튼 클릭 -> 데이터베이스 저장
+-메뉴추가 정보 미입력 -> 이전 페이지로 이동 -> 키오스크 화면 이동
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
