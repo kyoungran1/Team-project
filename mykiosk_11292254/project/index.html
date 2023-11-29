@@ -1,0 +1,39 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+  <title>My Kiosk</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><button class="menu-button" onclick="loadContent('coffee')">커피</button></li>
+        <li><button class="menu-button" onclick="loadContent('tea')">차</button></li>
+        <li><button class="menu-button" onclick="loadContent('blended')">블렌디드</button></li>
+        <li><button class="menu-button" onclick="loadContent('desserts')">디저트</button></li>
+      </ul>
+    </nav>
+    <button id="add-menu-button" onclick="loadContent('menu')">메뉴 추가</button>
+    <button id="login-button" onclick="loadContent('auth')">로그인</button>
+
+  </header>
+  
+  <main id="content-container"></main>
+
+  <div id="popup" class="popup">
+    <p id="popup-message"></p>
+    <button id="close-popup">닫기</button>
+    <button id="confirm-payment" style="display: none;">결제하기</button>
+  </div>
+  
+  <div class="cart">
+    <ul id="cart-items"></ul>
+    <button id="checkout-button" onclick="sendOrderToServer()">주문하기</button>
+  </div>
+</body>
+</html>
