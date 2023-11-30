@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles.css">
+  <title>Coffee Menu</title>
+</head>
+<body>
+  <main>
+    <div class="menu">
+      <div class="item">
+        <span>아메리카노</span>
+        <button class="add-to-cart" data-item="아메리카노">담기</button>
+      </div>
+      <div class="item">
+        <span>카페라떼</span>
+        <button class="add-to-cart" data-item="카페라떼">담기</button>
+      </div>
+      <!-- Add more menu items here -->
+      <div class="item">
+        <span>콜드브루</span>
+        <button class="add-to-cart" data-item="콜드브루">담기</button>
+      </div>
+      <div class="item">
+        <span>카페모카</span>
+        <button class="add-to-cart" data-item="카페모카">담기</button>
+      </div>
+    </div>
+  </main>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 담기 버튼에 대한 이벤트 리스너 등록
+      document.querySelector('.menu').addEventListener('click', (event) => {
+        if (event.target.classList.contains('add-to-cart')) {
+          const itemName = event.target.getAttribute('data-item');
+          addToCartHandler(itemName);
+        }
+      });
+
+      // 스크립트 로드
+      loadScript('script.js');
+    });
+
+    function loadScript(src) {
+      const script = document.createElement('script');
+      script.src = src;
+      document.head.appendChild(script);
+    }
+  </script>
+</body>
+</html>
