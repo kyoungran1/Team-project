@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.container {
+    background-color: #ececec;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#registerForm {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #555;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+button:hover {
+    background-color: #444;
+}
+
+#keypad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    margin-top: 10px;
+}
+
+#keypad button {
+    background-color: #ececec;
+    color: #555;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#keypad button:hover {
+    background-color: #ddd;
+}
+
+#registerFormContainer {
+    background-color: #ececec;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#registerFormContainer label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+#registerFormContainer input {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    box-sizing: border-box;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#registerFormContainer button {
+    background-color: #555;
+    color: #fff;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+}
+
+#registerFormContainer button:hover {
+    background-color: #444;
+}
+
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <div id="registerFormContainer">
+            <form id="registerForm">
+                <label for="registerPhone">Phone:</label>
+                <input type="text" id="registerPhone" name="registerPhone" required>
+                <button type="button" onclick="submitForm()">Register</button>
+                <button id="move-to-login-page">로그인</button>
+            </form>
+        </div>
+
+        <!-- 키패드 추가 -->
+        <div id="keypad">
+            <button onclick="appendToPhone('1')">1</button>
+            <button onclick="appendToPhone('2')">2</button>
+            <button onclick="appendToPhone('3')">3</button>
+            <button onclick="appendToPhone('4')">4</button>
+            <button onclick="appendToPhone('5')">5</button>
+            <button onclick="appendToPhone('6')">6</button>
+            <button onclick="appendToPhone('7')">7</button>
+            <button onclick="appendToPhone('8')">8</button>
+            <button onclick="appendToPhone('9')">9</button>
+            <button onclick="appendToPhone('0')">0</button>
+            <button onclick="clearPhone()">Clear</button>
+        </div>
+    </div>
+
+<script>
+    function submitForm() {
+        const phone = document.getElementById('registerPhone').value;
+
+        // AJAX 또는 fetch를 사용하여 서버로 데이터를 전송
+        fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ phone }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.message);
+
+            if (data.redirectTo) {
+                // 회원가입 성공 시 서버에서 전달한 리다이렉션 URL로 이동
+                window.location.href = data.redirectTo;
+            }
+        })
+        .catch(error => console.error('Error registering user:', error));
+    }
+
+    function appendToPhone(digit) {
+    const phoneInput = document.getElementById('registerPhone');
+    phoneInput.value += digit;
+}
+
+    function clearPhone() {
+        const phoneInput = document.getElementById('registerPhone');
+        phoneInput.value = '';
+    }
+
+    // 추가: 회원가입 성공 시 로그인 페이지로 이동하는 버튼에 대한 이벤트 핸들러 등록
+    const moveToLoginPageButton = document.getElementById('move-to-login-page');
+    moveToLoginPageButton.addEventListener('click', function () {
+        // 회원가입 페이지에서 로그인 페이지로 이동
+        window.location.href = '/login.html';
+    });
+</script>
+
+</body>
+</html>
