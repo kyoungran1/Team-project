@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        /* 스타일 추가 */
+        #keypad {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+<form id="registerForm">
+    <label for="registerPhone">Phone:</label>
+    <input type="text" id="registerPhone" name="registerPhone" required>
+
+    <button type="button" onclick="submitForm()">Register</button>
+    <button id="move-to-login-page">로그인</button>
+
+</form>
+
+<div id="keypad">
+    <button onclick="appendToPhone('1')">1</button>
+    <button onclick="appendToPhone('2')">2</button>
+    <button onclick="appendToPhone('3')">3</button>
+    <button onclick="appendToPhone('4')">4</button>
+    <button onclick="appendToPhone('5')">5</button>
+    <button onclick="appendToPhone('6')">6</button>
+    <button onclick="appendToPhone('7')">7</button>
+    <button onclick="appendToPhone('8')">8</button>
+    <button onclick="appendToPhone('9')">9</button>
+    <button onclick="appendToPhone('0')">0</button>
+    <button onclick="clearPhone()">Clear</button>
+</div>
+
+<script>
+    function submitForm() {
+        const phone = document.getElementById('registerPhone').value;
+
+        // AJAX 또는 fetch를 사용하여 서버로 데이터를 전송
+        fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ phone }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            console.log(data.message);
+
+            if (data.redirectTo) {
+                // 회원가입 성공 시 서버에서 전달한 리다이렉션 URL로 이동
+                window.location.href = data.redirectTo;
+            }
+        })
+        .catch(error => console.error('Error registering user:', error));
+    }
+
+    function appendToPhone(digit) {
+    const phoneInput = document.getElementById('registerPhone');
+    phoneInput.value += digit;
+}
+
+    function clearPhone() {
+        const phoneInput = document.getElementById('phone');
+        phoneInput.value = '';
+    }
+
+    // 추가: 회원가입 성공 시 로그인 페이지로 이동하는 버튼에 대한 이벤트 핸들러 등록
+    const moveToLoginPageButton = document.getElementById('move-to-login-page');
+    moveToLoginPageButton.addEventListener('click', function () {
+        // 회원가입 페이지에서 로그인 페이지로 이동
+        window.location.href = '/login.html';
+    });
+</script>
+
+</body>
+</html>
