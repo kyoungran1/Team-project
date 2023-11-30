@@ -1,3 +1,5 @@
+mykiosk_keypads도 내용동일
+
 mykiosk
 |
 ├── node_modules
