@@ -1,0 +1,50 @@
+{
+  "id": "mykiosk",
+  "version": "1.0.0",
+  "name": "My Kiosk",
+  "description": "Your description here",
+  "title": "ui/frontend/project/index.html",
+  "main": "ui/frontend/project/index.html",
+  "icon": "ui/frontend/assets/icon.png",
+  "splash": "ui/frontend/assets/splash.png",
+  "type": "web",
+  "tags": ["kiosk", "menu"],
+  "license": "Apache-2.0",
+  "contributors": ["Your Name"],
+  "dependencies": {
+    "backend": {
+      "services": [
+        "services/backend/main_server.js",
+        "services/backend/common_backend_code.js",
+        "services/backend/auth_server.js",
+        "services/backend/menus_server.js"
+      ]
+    },
+    "frontend": {
+      "ui": [
+        "ui/frontend/auth/index.html",
+        "ui/frontend/auth/login.html",
+        "ui/frontend/auth/register.html",
+        "ui/frontend/auth/auth.js",
+        "ui/frontend/menus/menu.html",
+        "ui/frontend/menus/MenuComponent.js",
+        "ui/frontend/project/appinfo.json",
+        "ui/frontend/project/blended.html",
+        "ui/frontend/project/coffee.html",
+        "ui/frontend/project/desserts.html",
+        "ui/frontend/project/index.html",
+        "ui/frontend/project/script.js",
+        "ui/frontend/project/styles.css",
+        "ui/frontend/project/tea.html"
+      ]
+    }
+  },
+  "resources": {
+    "en_us": {
+      "description": "Your description in English",
+      "authors": ["Your Name"]
+    }
+  },
+  "vendor": "My Company",
+  "requiredPermissions": ["time.query", "activity.operation"]
+}

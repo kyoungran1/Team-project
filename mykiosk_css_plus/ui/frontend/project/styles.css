@@ -1,0 +1,209 @@
+/* styles.css */
+
+/* 전체 스타일 초기화 및 기본 스타일 적용 */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f2f2f2;
+}
+
+/* 헤더 스타일링 */
+header {
+  background-color: #333;
+  color: white;
+  padding: 0;
+  text-align: center;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end; /* h1과 ul을 아래 정렬 */
+}
+
+h1 {
+  color: white;
+  font-size: 7em;
+  margin-bottom: 0;
+}
+
+nav ul {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  gap: 50px; /* 각 메뉴 버튼 사이의 간격 */
+  justify-content: flex-end; /* 메뉴 버튼을 오른쪽 정렬 */
+}
+
+.menu-button {
+  background-color: #555;
+  color: white;
+  padding: 15px 40px;
+  border: none;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* .button-group 스타일링 */
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row; /* 수정: 버튼들을 가로로 나열하기 위해 로우 방향으로 설정 */
+  align-items: center; /* 중앙 정렬 */
+  gap: 10px;
+}
+
+/* 메인 콘텐츠 스타일링 */
+main {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  margin-top: 100px;
+}
+
+.menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1000px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #d2d2d2;
+  padding: 15px;
+  width: calc(20% - 40px);
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.item img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.item span {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.add-to-cart {
+  background-color: #555;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.add-to-cart:hover {
+  background-color: #333;
+}
+
+/* 팝업 스타일링 */
+#popup {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px;
+  background-color: #ecf0f1;
+  border: 1px solid #ccc;
+}
+
+.popup-message {
+  margin-bottom: 10px;
+}
+
+#confirm-payment,
+#close-popup {
+  background-color: #2ecc71;
+  color: white;
+  padding: 8px 16px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#confirm-payment:hover,
+#close-popup:hover {
+  background-color: #27ae60;
+}
+
+/* 장바구니 스타일링 */
+.cart {
+  background-color: #f0f0f0;
+  padding: 20px;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  text-align: center;
+}
+
+#cart-items {
+  list-style-type: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#cart-items li {
+  margin: 10px;
+}
+
+#checkout-button {
+  background-color: #2ecc71;
+  color: white;
+  padding: 15px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+#checkout-button:hover {
+  background-color: #27ae60;
+}
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+/* 메뉴 추가 버튼 스타일링 */
+#add-menu-button {
+  background-color: #555;
+  color: white;
+  padding: 5px 15px;
+  font-size: 10;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+#add-menu-button:hover {
+  background-color: #555;
+}
+
+/* 로그인 버튼 스타일링 */
+#login-button {
+  background-color: #555;
+  color: white;
+  padding: 5px 15px;
+  font-size: 12px;
+  font-weight: bold;
+}
